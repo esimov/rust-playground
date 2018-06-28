@@ -1,0 +1,14 @@
+[package]
+name = "rust-playground"
+version = "0.1.0"
+authors = ["Endre Simo <esimov@gmail.com>"]
+
+[dependencies]
+
+[[example]]
+name = "hello-world"
+path = "hello-world/src/main.rs"
+
+[[example]]
+name = "gdc"
+path = "gdc/src/main.rs"

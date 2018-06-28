@@ -1,6 +1,0 @@
-[package]
-name = "gdc"
-version = "0.1.0"
-authors = ["esimov <esimovaq@yahoo.com>"]
-
-[dependencies]
