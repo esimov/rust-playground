@@ -16,7 +16,7 @@ fn main() {
     router.post("/gcd", post_gcd, "gcd");
 
     println!("Serving on http://localhost:8080...");
-    Iron::new(get_form).http("localhost:8080").unwrap();
+    Iron::new(router).http("localhost:8080").unwrap();
 }
 
 fn get_form(_request: &mut Request) -> IronResult<Response> {
@@ -40,9 +40,9 @@ fn post_gcd(request: &mut Request) -> IronResult<Response> {
     let mut response = Response::new();
 
     let form_data = match request.get_ref::<UrlEncodedBody>() {
-        Err(expr) => {
+        Err(e) => {
             response.set_mut(status::BadRequest);
-            response.set_mut(format!("Error parsing form data: {:?}\n", expr));
+            response.set_mut(format!("Error parsing form data: {:?}\n", e));
             return Ok(response);
         },
         Ok(map) => map
